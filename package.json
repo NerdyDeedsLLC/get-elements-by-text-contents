@@ -1,0 +1,32 @@
+{
+  "name": "get-elements-by-text-contents",
+  "version": "1.0.0",
+  "description": "Extremely-lightweight, flexible method which allows the user to search the DOM for all nodes containing a specific, provided search string. Supports DOM tree scoping, case-(in)sensitivity as well as an exclusionary selector to omit matching nodes. No dependencies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NerdyDeedsLLC/getElementsByTextContents.git"
+  },
+  "keywords": [
+    "JS",
+    "search",
+    "DOM",
+    "keywords",
+    "nodes",
+    "term",
+    "find",
+    "location",
+    "parse",
+    "traverse",
+    "nodelist"
+  ],
+  "author": "@JJ - Nerdy Deeds, LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NerdyDeedsLLC/getElementsByTextContents/issues"
+  },
+  "homepage": "https://github.com/NerdyDeedsLLC/getElementsByTextContents#readme"
+}
