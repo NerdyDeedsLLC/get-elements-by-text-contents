@@ -14,6 +14,7 @@
     *                                                  Its license terms are contained therein.
     *  
     **/
+   
     module.exports = (searchText=/.*/, caseSensitive=false, exclusionarySelector='script', scope=document.body) => {
         let flags      = caseSensitive                                                                          // If we're doing a case-sensitive search...
                        ? 'm'                                                                                    // ... set only mutli-line flags...

@@ -1,8 +1,9 @@
-# getElementsByTextContents
-
+# get-elements-by-text-contents
+ 
 [![NPM](https://img.shields.io/badge/npm-v.6.14.9-blue)](https://www.npmjs.org/package/get-elements-by-text-contents)
 [![js-standard-style](https://img.shields.io/badge/JS-Vanilla-white)](http://vanilla-js.com/)
 [![dark-side](https://img.shields.io/badge/Force-Strong%20with%20this%20one-black)](https://youtu.be/lFEoT7M3SbI?t=42)
+
 NPM Package - Extremely-lightweight, flexible method which allows the user to search the 
 DOM for all nodes containing a specific, provided search string. Supports DOM tree scoping, 
 case-(in)sensitivity as well as an exclusionary selector to omit matching nodes. 

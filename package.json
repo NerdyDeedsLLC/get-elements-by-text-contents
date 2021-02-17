@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NerdyDeedsLLC/getElementsByTextContents.git"
+    "url": "git+https://github.com/NerdyDeedsLLC/get-elements-by-text-contents.git"
   },
   "keywords": [
     "JS",
@@ -26,7 +26,7 @@
   "author": "@JJ - Nerdy Deeds, LLC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NerdyDeedsLLC/getElementsByTextContents/issues"
+    "url": "https://github.com/NerdyDeedsLLC/get-elements-by-text-contents/issues"
   },
-  "homepage": "https://github.com/NerdyDeedsLLC/getElementsByTextContents#readme"
+  "homepage": "https://github.com/NerdyDeedsLLC/get-elements-by-text-contents#readme"
 }
