@@ -12,25 +12,33 @@ case-(in)sensitivity as well as an exclusionary [selector](https://developer.moz
 
 No dependencies.
 
+# So what does it ACTUALLY do?
+If you wanna search a page for every instance of a string, and get back the elements that CONTAIN those instances - 
+almost instantly, and without mutating or having to iterate the entire DOM - this is your method.
+
+In goes search text...
+
+...out comes DOM nodes.
+
 ## Examples
 ``` javascript
-    // Import the method
-        const getElementsByTextContents = require('get-elements-by-text-contents');
-        //         ==OR==  (and this is personal preference; you do you):
-        document.getElementsByTextContents = require('get-elements-by-text-contents');
+// Import the method
+const getElementsByTextContents = require('get-elements-by-text-contents');
+//         ==OR==  (and this is personal preference; you do you):
+document.getElementsByTextContents = require('get-elements-by-text-contents');
 
-    // Find your targets
-        console.log(getElementsByTextContents('myText'))
-        // RESULT => [p, div, a, h2]
+// Find your targets
+console.log(getElementsByTextContents('myText'))
+// RESULT => [p, div, a, h2]
 
-        console.log(getElementsByTextContents('MyTeXt', true))
-        // RESULT => [p, h2]
+console.log(getElementsByTextContents('MyTeXt', true))
+// RESULT => [p, h2]
 
-        console.log(getElementsByTextContents('myText', false, ''))
-        // RESULT => [p, div, a, h2, script, script]
+console.log(getElementsByTextContents('myText', false, ''))
+// RESULT => [p, div, a, h2, script, script]
 
-        console.log(getElementsByTextContents('myText', false, 'script,p,h2'))
-        // RESULT => [div, a]
+console.log(getElementsByTextContents('myText', false, 'script,p,h2'))
+// RESULT => [div, a]
 ```
 
 # getElementsByTextContents(searchText, [caseSensitive, [exclusionarySelector, [scope]]])
@@ -41,7 +49,7 @@ regardless of the number of results it manages to locate.
 
 ### If results are found...
 Results will be returned in an array, in the form of the [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode)
- of the located object (this is due to the text itself being present in a [Text]()https://developer.mozilla.org/en-US/docs/Web/API/Text) node, 
+ of the located object (this is due to the text itself being present in a [Text](https://developer.mozilla.org/en-US/docs/Web/API/Text) node, 
  which are virtually impossible to interact with (especially without mutating the DOM). In short, you get back the node CONTAINING the text, not the
 text itself).
 
@@ -58,16 +66,16 @@ their collective [root](https://developer.mozilla.org/en-US/docs/Web/API/TreeWal
 _Note: Below examples are assuming an html page that looks like the following._
 
 ``` html
-    <a href="#findtext">Method: Find This Text</a>
-    <h4>Find This Text</h4>
-    <p class="desc">
-        I wanted a method that would let me find this text and return all the 
-        nodes on the page containing it. So I wrote one.
-    </p>
-    <script>
-        // Looking for a quick method to "find this text"?
-        npm install get-elements-by-text-contents
-    </script>
+<a href="#findtext">Method: Find This Text</a>
+<h4>Find This Text</h4>
+<p class="desc">
+    I wanted a method that would let me find this text and return all the 
+    nodes on the page containing it. So I wrote one.
+</p>
+<script>
+    // Looking for a quick method to "find this text"?
+    npm install get-elements-by-text-contents
+</script>
 ```
 
 
@@ -77,22 +85,22 @@ or a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 that will result in a match for the text the user wishes to find within the page.
 
 ``` javascript
-    getElementsByTextContents('find this text');
-    // => [a, h4, p]
+getElementsByTextContents('find this text');
+// => [a, h4, p]
 
-    getElementsByTextContents(/.+find this/im);
-    // => [a, p]
-    // Note that the <h4> is omitted, due to the regular expression requiring text to preface the 
-    // matched string.
+getElementsByTextContents(/.+find this/im);
+// => [a, p]
+// Note that the <h4> is omitted, due to the regular expression requiring text to preface the 
+// matched string.
 ```
 
 ### caseSensitive (boolean; optional) [default: false]
 Whether or not the search should be [case sensitive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase)
 
 ``` javascript
-    getElementsByTextContents('find this text', true);
-    // => [p]
-    // Note that the <a> and <h4> tags are omitted, due to their being written In Title Case.
+getElementsByTextContents('find this text', true);
+// => [p]
+// Note that the <a> and <h4> tags are omitted, due to their being written In Title Case.
 ```
 
 ### exclusionarySelector (string) [default: 'script']
@@ -102,15 +110,15 @@ This can be overridden by simply passing a blank string (`""`) or a `null` into 
 _Note that if you override this parameter to pass in a new set of exclusions, `<script>` tags will NOT be omitted unless you expressly include them in your selector._
 
 ``` javascript
-    getElementsByTextContents('find this text', false, '');
-    // => [a, h4, p, script]
-    // Note the inclusion of the script tag in the search results: passing the blank string 
-    // as the third parameter overrides the default selector of "script".
+getElementsByTextContents('find this text', false, '');
+// => [a, h4, p, script]
+// Note the inclusion of the script tag in the search results: passing the blank string 
+// as the third parameter overrides the default selector of "script".
 
-    getElementsByTextContents('find this text', false, '[href],.desc,script');
-    // => [h4]
-    // In this case, the exclusionary selector omits all the results other than the <h4> (those that match
-    // the selector: any tag with an href property, a class of 'desc' or that itself is a <script> tag.
+getElementsByTextContents('find this text', false, '[href],.desc,script');
+// => [h4]
+// In this case, the exclusionary selector omits all the results other than the <h4> (those that match
+// the selector: any tag with an href property, a class of 'desc' or that itself is a <script> tag.
 ```
 
 ### scope (string) [default: `document.body`]
@@ -118,10 +126,10 @@ Dictates the [root DOM Element](https://developer.mozilla.org/en-US/docs/Web/API
 If none is specified, `document.body` is assumed.
 
 ``` javascript
-    getElementsByTextContents('find this text', false, '', document.querySelector('h4'));
-    // => [h4]
-    // Since it is the only node within the document fragment our examples have been based within, 
-    // naturally it's the only one returned.
+getElementsByTextContents('find this text', false, '', document.querySelector('h4'));
+// => [h4]
+// Since it is the only node within the document fragment our examples have been based within, 
+// naturally it's the only one returned.
 ```
 
 ## LICENSE [MIT](LICENSE)
